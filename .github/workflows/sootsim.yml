@@ -20,7 +20,7 @@ jobs:
       - uses: sootbean/soot-preview-action@v1
         with:
           package-manager: yarn
-          install: yarn install --frozen-lockfile && yarn --cwd dev-env install --frozen-lockfile
+          install: yarn install --frozen-lockfile && yarn intl:compile && yarn --cwd dev-env install --frozen-lockfile
           runner: hosted
           port: 8082
           start: >-
