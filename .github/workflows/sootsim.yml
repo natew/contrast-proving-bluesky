@@ -1,0 +1,29 @@
+name: Contrast
+
+on:
+  push:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+
+permissions:
+  contents: read
+  pull-requests: write
+  issues: write
+
+jobs:
+  contrast:
+    if: ${{ github.event.pull_request.draft != true }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: sootbean/soot-preview-action@v1
+        with:
+          package-manager: yarn
+          runner: hosted
+          port: 8082
+          start: >-
+            yarn e2e:mock-server &
+            until curl --fail --silent http://localhost:1986/ > /dev/null; do sleep 1; done;
+            EXPO_PUBLIC_ENV=e2e NODE_ENV=test RN_SRC_EXT=e2e.ts,e2e.tsx
+            yarn expo start --port 8082 --clear
