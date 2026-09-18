@@ -34,6 +34,7 @@ export function CharProgress({
     <View
       style={[a.flex_row, a.align_center, a.justify_between, a.gap_sm, style]}>
       <Text
+        testID="composerCharacterCounter"
         style={[
           {color: textColor, fontVariant: ['tabular-nums']},
           a.flex_grow,
@@ -41,7 +42,7 @@ export function CharProgress({
           textStyle,
         ]}
         maxFontSizeMultiplier={1}>
-        {maxLength - count}
+        {maxLength - count} left
       </Text>
       {count > maxLength ? (
         <ProgressPie
