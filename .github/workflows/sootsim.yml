@@ -19,7 +19,7 @@ jobs:
     timeout-minutes: 45
     steps:
       - uses: actions/checkout@v4
-      - uses: sootbean/soot-preview-action@v1
+      - uses: sootbean/soot-preview-action@1c65429233655ae0b202925e9db2bac05256dc97
         with:
           package-manager: yarn
           node-version: 20
