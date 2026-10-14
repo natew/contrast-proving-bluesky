@@ -10,6 +10,7 @@ permissions:
   contents: read
   pull-requests: write
   issues: write
+  actions: read
 
 jobs:
   contrast:
@@ -18,13 +19,14 @@ jobs:
     timeout-minutes: 45
     steps:
       - uses: actions/checkout@v4
-      - uses: sootbean/soot-preview-action@v1
+      - uses: sootbean/soot-preview-action@1c65429233655ae0b202925e9db2bac05256dc97
         with:
           package-manager: yarn
           node-version: 20
           install: yarn install --frozen-lockfile && yarn intl:compile && yarn --cwd dev-env install --frozen-lockfile
           runner: hosted
           port: 8082
+          sidecar-ports: 1986,3000,3001,3002,2584
           start: >-
             yarn e2e:mock-server &
             until curl --fail --silent http://localhost:1986/ > /dev/null; do sleep 1; done;
