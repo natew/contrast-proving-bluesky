@@ -10,6 +10,7 @@ permissions:
   contents: read
   pull-requests: write
   issues: write
+  actions: read
 
 jobs:
   contrast:
@@ -25,6 +26,7 @@ jobs:
           install: yarn install --frozen-lockfile && yarn intl:compile && yarn --cwd dev-env install --frozen-lockfile
           runner: hosted
           port: 8082
+          sidecar-ports: 1986
           start: >-
             yarn e2e:mock-server &
             until curl --fail --silent http://localhost:1986/ > /dev/null; do sleep 1; done;
