@@ -30,5 +30,6 @@ jobs:
           start: >-
             yarn e2e:mock-server &
             until curl --fail --silent http://localhost:1986/ > /dev/null; do sleep 1; done;
+            export EXPO_PUBLIC_BLUESKY_PROXY_DID=$(curl --fail --silent -X POST 'http://localhost:1986/?users&follows&posts' | node -pe 'JSON.parse(require("fs").readFileSync(0, "utf8")).appviewDid');
             EXPO_PUBLIC_ENV=e2e NODE_ENV=test RN_SRC_EXT=e2e.ts,e2e.tsx
             yarn expo start --port 8082 --clear
