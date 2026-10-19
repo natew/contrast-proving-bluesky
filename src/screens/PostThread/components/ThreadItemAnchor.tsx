@@ -399,7 +399,7 @@ const ThreadItemAnchorInner = memo(function ThreadItemAnchorInner({
                 enableTags
                 selectable
                 value={richText}
-                style={[a.flex_1, a.text_lg]}
+                style={[a.flex_1, a.text_3xl]}
                 authorHandle={post.author.handle}
                 shouldProxyLinks={true}
               />

@@ -481,12 +481,12 @@ let PostContent = ({
             testID="postText"
             value={richText}
             numberOfLines={limitLines ? MAX_POST_LINES : undefined}
-            style={[a.flex_1, a.text_md]}
+            style={[a.flex_1, a.text_2xl]}
             authorHandle={postAuthor.handle}
             shouldProxyLinks={true}
           />
           {limitLines && (
-            <ShowMoreTextButton style={[a.text_md]} onPress={onPressShowMore} />
+            <ShowMoreTextButton style={[a.text_2xl]} onPress={onPressShowMore} />
           )}
         </View>
       ) : undefined}
