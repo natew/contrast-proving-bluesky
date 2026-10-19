@@ -50,9 +50,23 @@ createHTTPServer(async (req, res) => {
       }
       if ('posts' in url.query) {
         console.log('Generating mock posts')
-        for (let user in server.mocker.users) {
-          await server.mocker.users[user].agent.post({text: 'Post'})
-        }
+        const {alice, bob, carla} = server.mocker.users
+        await alice.agent.post({
+          text: 'Picked the first peaches of the summer this morning. The whole kitchen smells like them.',
+        })
+        const run = await bob.agent.post({
+          text: 'Trail run before work. Legs said no, coffee said yes.',
+        })
+        await carla.agent.post({
+          text: 'Same trail? Someone flew past the creek at seven.',
+          reply: {
+            parent: {cid: run.cid, uri: run.uri},
+            root: {cid: run.cid, uri: run.uri},
+          },
+        })
+        await carla.agent.post({
+          text: 'Repainted the front door yellow. The neighbors have opinions.',
+        })
       }
       if ('feeds' in url.query) {
         console.log('Generating mock feed')
