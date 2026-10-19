@@ -24,7 +24,7 @@ jobs:
           package-manager: yarn
           node-version: 20
           install: yarn install --frozen-lockfile && yarn intl:compile && yarn --cwd dev-env install --frozen-lockfile
-          runner: hosted
+          runner: local
           port: 8082
           sidecar-ports: 1986,3000,3001,3002,2584
           start: >-
