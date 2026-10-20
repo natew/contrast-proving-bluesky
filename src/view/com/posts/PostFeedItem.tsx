@@ -406,6 +406,9 @@ let FeedItemInner = ({
 }
 FeedItemInner = memo(FeedItemInner)
 
+// the feed reads posts at the same larger size as their threads
+const POST_TEXT_SIZE = a.text_2xl
+
 let PostContent = ({
   post,
   moderation,
@@ -481,12 +484,12 @@ let PostContent = ({
             testID="postText"
             value={richText}
             numberOfLines={limitLines ? MAX_POST_LINES : undefined}
-            style={[a.flex_1, a.text_2xl]}
+            style={[a.flex_1, POST_TEXT_SIZE]}
             authorHandle={postAuthor.handle}
             shouldProxyLinks={true}
           />
           {limitLines && (
-            <ShowMoreTextButton style={[a.text_2xl]} onPress={onPressShowMore} />
+            <ShowMoreTextButton style={[POST_TEXT_SIZE]} onPress={onPressShowMore} />
           )}
         </View>
       ) : undefined}
