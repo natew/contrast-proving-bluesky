@@ -308,14 +308,14 @@ const ThreadItemPostInner = memo(function ThreadItemPostInner({
                   <RichText
                     enableTags
                     value={richText}
-                    style={[a.flex_1, a.text_md]}
+                    style={[a.flex_1, a.text_2xl]}
                     numberOfLines={limitLines ? MAX_POST_LINES : undefined}
                     authorHandle={post.author.handle}
                     shouldProxyLinks={true}
                   />
                   {limitLines && (
                     <ShowMoreTextButton
-                      style={[a.text_md]}
+                      style={[a.text_2xl]}
                       onPress={onPressShowMore}
                     />
                   )}
